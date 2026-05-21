@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Stream CCTV</title>
+    <style>
+        body { background: #333; text-align: center; color: white; font-family: sans-serif; }
+        .stream-container { display: inline-block; margin: 10px; border: 2px solid #555; }
+        canvas { width: 640px; height: 480px; background: #000; }
+        h3 { margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>Monitorizare Camere Live</h2>
+
+    <div class="stream-container">
+        <h3>Camera 1 (Port 9999)</h3>
+        <canvas id="canvas1"></canvas>
+    </div>
+
+    <div class="stream-container">
+        <h3>Camera 2 (Port 9998)</h3>
+        <canvas id="canvas2"></canvas>
+    </div>
+
+    <script src="jsmpeg.min.js"></script>
+    
+    <script>
+        // Setări pentru primul stream (IP-ul serverului tău)
+        var canvas1 = document.getElementById('canvas1');
+        var url1 = 'ws://localhost:9999';
+        var player1 = new JSMpeg.Player(url1, { canvas: canvas1 });
+
+        // Setări pentru al doilea stream
+        var canvas2 = document.getElementById('canvas2');
+        var url2 = 'ws://localhost:9998'; // Portul setat în server pentru camera 2
+        var player2 = new JSMpeg.Player(url2, { canvas: canvas2 });
+    </script>
+</body>
+</html>
